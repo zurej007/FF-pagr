@@ -1,1 +1,55 @@
 index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Important Notice</title>
+  <style>
+    :root{--bg:#0b1020;--card:#0f1724;--accent:#ef4444}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;color:#fff;background:linear-gradient(180deg,#071029 0%,#08121b 100%)}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
+    .card{width:100%;max-width:720px;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));padding:20px;border-radius:12px;text-align:center;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    h1{margin:6px 0;font-size:2.1rem;letter-spacing:0.6px}
+    p{margin:8px 0 16px;font-size:1rem;color:rgba(255,255,255,0.9)}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;border:0;font-weight:700;cursor:pointer;background:rgba(255,255,255,0.06);color:#fff}
+    .small{font-size:0.88rem;opacity:0.9;margin-top:12px}
+    .danger{color:var(--accent);font-weight:800}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" id="card">
+      <h1 id="title">IMPORTANT — SECURITY ALERT</h1>
+      <p id="desc">We detected suspicious activity on this page. Tap the button below to proceed.</p>
+      <button class="btn" id="btn">Proceed</button>
+      <div id="reveal" class="hidden">
+        <h1 class="danger">Got You!</h1>
+        <p class="small">You’ve been hacked 😈 —  hacking here, just a trap.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('btn');
+    const title = document.getElementById('title');
+    const desc = document.getElementById('desc');
+    const reveal = document.getElementById('reveal');
+
+    btn.addEventListener('click', () => {
+      title.textContent = "ACCESS DENIED";
+      desc.textContent = "Unauthorized connection detected. Finalizing...";
+      btn.textContent = "Please Wait";
+      btn.disabled = true;
+
+      setTimeout(() => {
+        reveal.classList.remove('hidden');
+        title.textContent = "You are hacked 😱";
+        desc.textContent = "don't scam anyone! Or I will have to hack you again.";
+        btn.style.display = 'none';
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
